@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = process.env.PORT || 5000;
 
 const https = require('https');
@@ -7,10 +8,6 @@ const https = require('https');
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 const API_KEY = 'a7303bfc614c4ec78d6f75d3aede1354';
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-  });
 
 app.get('/api/search', (req, res) => {
     const showToSearch = req.query.name;
@@ -67,4 +64,6 @@ app.get('/api/season', (req, res) => {
     });
 });
 
-
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  });
