@@ -1,0 +1,1 @@
+export const IMAGES = 'https://image.tmdb.org/t/p/w500/';
