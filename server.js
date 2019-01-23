@@ -9,6 +9,8 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 const API_KEY = '***REMOVED***';
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.get('/api/search', (req, res) => {
     const showToSearch = req.query.name;
     https.get('https://api.themoviedb.org/3/search/tv?api_key='+API_KEY+'&language=en-US&query='+showToSearch+'&page=1', (api_response) => {
