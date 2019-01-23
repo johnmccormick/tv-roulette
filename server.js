@@ -6,11 +6,6 @@ const https = require('https');
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.get('/express_backend', (req, res) => {
-    console.log('Hit express backend');
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
-
 const API_KEY = 'a7303bfc614c4ec78d6f75d3aede1354';
 
 app.get('/api/search', (req, res) => {
