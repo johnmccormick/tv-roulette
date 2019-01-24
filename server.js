@@ -5,9 +5,13 @@ const port = process.env.PORT || 5000;
 
 const https = require('https');
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').load();
+  }
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-const API_KEY = 'a7303bfc614c4ec78d6f75d3aede1354';
+const API_KEY = process.env.API_KEY;
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
