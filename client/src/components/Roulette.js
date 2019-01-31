@@ -4,8 +4,7 @@ import * as URLs from './../URLs'
 
 import GenericButton from './styled/GenericButton'
 import HeaderText from './styled/HeaderText'
-import SegmentWrapper from './styled/SegmentWrapper';
-//import SegmentWrapper from './styled/SegmentWrapper'
+import EpisodeInfo from './styled/EpisodeInfo';
 
 function SpinButton(props) {
 	if (props.pickedShow != null) {
@@ -70,27 +69,32 @@ function Episode(props) {
 		const episodeNumber = episodeData.episode_number;
 		const overview = episodeData.overview;
 		const showName = props.pickedShow.name;
+		//const airDate = episodeData.air_date;
 		return (
-			<div className="episode-info-inner">
+			<EpisodeInfo>
+				<div className="grid-box-1">
 				<HeaderText fatpadding>
 					<h2>Your pick is</h2>
 					<h1>{title}</h1>
 				</HeaderText>
-				{stillImage}
-				<HeaderText fatpadding>
-					<h2>{showName}</h2>
-					<h2>Season {seasonNumber}</h2>
-					<h3>Episode {episodeNumber}</h3>
-				</HeaderText>
-				{props.showSummary ? 
-					<SegmentWrapper rounded>
-						<p>
-							{overview}
-						</p>
-					</SegmentWrapper>
-				: null}
-				<GenericButton onClick={() => props.toggleSummary()}>{props.showSummary ? 'Hide summary' : 'Show summary'}</GenericButton>
-			</div>
+				</div>
+				<div className="grid-box-inner">
+					<div className="grid-box-inner-1">
+						{stillImage}
+					</div>
+					<div className="grid-box-inner-2">
+						<HeaderText fatpadding>
+							<h2>{showName}</h2>
+							<h3>Season {seasonNumber}, Episode {episodeNumber}</h3>
+						</HeaderText>
+						{props.showSummary ? 
+							<p>
+								{overview}
+							</p>
+						: null}
+					</div>
+				</div>
+			</EpisodeInfo>
 		);
 	} else {
 		return (null);
@@ -101,7 +105,7 @@ class Roulette extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = ({
-			showSummary: false,
+			showSummary: true,
 		});
 	}
 
