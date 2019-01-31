@@ -5,14 +5,15 @@ const SearchResultButton = styled.button`
     ${SegmentStyle};
     display: grid;
     grid-template-columns: 50px 410px;
-    grid-template-rows: 1fr 1fr;
-    align-items: start;
+    grid-template-rows: 3fr 2fr;
+
 
     font-family: inherit;
     font-size: 20px;
     color: white;
-    padding: 5px;
+    padding: 7px 2px 2px 3px;
     border: 0;
+    border-radius: 3px;
     margin: 1px 0;
     width: 500px;
     background: rgba(0, 0, 0, 0.4) repeat scroll 0% 0%;

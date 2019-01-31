@@ -56,16 +56,16 @@ class SearchResults extends React.Component {
     let resultRows = Array(0);
     if (numSearchResults > 0) {
       resultRows.push (
-        <SegmentWrapper>
+        <SegmentWrapper key='0' rounded>
           <p>Search Results</p>
         </SegmentWrapper>
       );
       for (let i = 0; i < numSearchResults; i++)
       {
         resultRows.push (
-          <div>
-            <SearchResultButton key={i} onClick={() => this.props.pickShow(i)}>
-              <div className="grid-box-1">
+          <div key={i+1}>
+            <SearchResultButton onClick={() => this.props.pickShow(i)}>
+              <div /*key={`1-${i}`}*/ className="grid-box-1">
                 {this.searchedShowImg(i)}
               </div>
               <div className="grid-box-2">
