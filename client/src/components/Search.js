@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import * as URLs from './../URLs'
+import * as URLs from './../URLs'
 
 import TextInput from './styled/TextInput'
 import SearchWrapper from './styled/SearchWrapper'
@@ -20,13 +20,24 @@ function SearchInput(props) {
 class SearchResults extends React.Component {
   searchedShowText(i) {
     return (
-      <p key={i}>
-        {this.props.searchResults[i].name}
+      <p>
+        {this.props.searchResults[i].original_name}
       </p>
     );
   }
   
-/*
+  searchedShowYear(i) {
+    var date = this.props.searchResults[i].first_air_date;
+    var year = date.substring(0, 4);
+
+    return (
+      <p>
+        {year}
+      </p>
+      );
+    
+  }
+
   searchedShowImg(i) {
     if (this.props.searchResults[i].poster_path != null) {
       return (
@@ -36,7 +47,6 @@ class SearchResults extends React.Component {
       return (null);
     }
   }
-*/
 
   render() {
     let numSearchResults = this.props.numSearchResults;
@@ -55,7 +65,15 @@ class SearchResults extends React.Component {
         resultRows.push (
           <div>
             <SearchResultButton key={i} onClick={() => this.props.pickShow(i)}>
-              {this.searchedShowText(i)}
+              <div className="grid-box-1">
+                {this.searchedShowImg(i)}
+              </div>
+              <div className="grid-box-2">
+                {this.searchedShowText(i)}
+              </div>
+              <div className="grid-box-3">
+                {this.searchedShowYear(i)}
+              </div>
             </SearchResultButton>
           </div>
         );
