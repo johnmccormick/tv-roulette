@@ -13,7 +13,7 @@ const MAX_RESULTS = 7;
 
 function SearchInput(props) {
   return (
-    <TextInput name="search-input" onChange={props.handleSearchChange.bind(this)} onKeyDown={props.handleSearchKeyDown.bind(this)} value={props.searchInputValue} label="Show" type="text" placeholder="Pick a show"/>
+    <TextInput name="search-input" onChange={props.handleSearchChange.bind(this)} on onFocus={props.handleFocus.bind(this)} onKeyDown={props.handleSearchKeyDown.bind(this)} value={props.searchInputValue} label="Show" type="text" placeholder="Pick a show"/>
   );
 }
 
@@ -91,6 +91,7 @@ class Search extends React.Component {
     super(props);
     this.state = {
       searchString: null,
+      displaySearch: false
     }
   }
 
@@ -128,11 +129,15 @@ class Search extends React.Component {
     clearTimeout(this.timer);
   }
 
+  handleFocus(e) {
+    this.setState({displaySearch: true})
+  }
+
   render() {
     return (
       <SearchWrapper>
-        <SearchInput handleSearchChange={this.handleSearchChange.bind(this)} handleSearchKeyDown={this.handleSearchKeyDown.bind(this)} searchInputValue={this.props.searchInputValue} />
-        <SearchResults searchResults={this.props.searchResults} numSearchResults={this.props.numSearchResults} pickShow={this.pickShow.bind(this)}/>
+        <SearchInput handleSearchChange={this.handleSearchChange.bind(this)} handleFocus={this.handleFocus.bind(this)} handleSearchKeyDown={this.handleSearchKeyDown.bind(this)} searchInputValue={this.props.searchInputValue} />
+        {this.state.displaySearch ? <SearchResults searchResults={this.props.searchResults} numSearchResults={this.props.numSearchResults} pickShow={this.pickShow.bind(this)}/> : null}
       </SearchWrapper>
     );
   }

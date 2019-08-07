@@ -5,7 +5,6 @@ import Search from './components/Search'
 import Roulette from './components/Roulette'
 
 import Wrapper from './components/styled/Wrapper'
-import InnerWrapper from './components/styled/InnerWrapper'
 
 class App extends React.Component {
   constructor(props) {
@@ -36,7 +35,6 @@ class App extends React.Component {
     const showToSearch = this.state.searchString;
     const api_call = await fetch('/api/search?name='+showToSearch);
     const data = await api_call.json();
-    console.log(data);
     if (data.total_results > 0) {
       this.setState({
         numSearchResults: data.results.length,
@@ -52,7 +50,6 @@ class App extends React.Component {
 
   pickShow(i) {
     const searchResults = this.state.searchResults;
-    console.log(searchResults);
     this.setState({
       pickedShow: searchResults[i],
     }, () => {
@@ -86,7 +83,6 @@ class App extends React.Component {
     const showID = this.state.pickedShow.id;
     let api_call = await fetch('/api/show?id='+ showID);
     let data = await api_call.json();
-    console.log(data);
     const numSeasons = data.number_of_seasons;
     let pickedSeason = Math.random() * (numSeasons);
     pickedSeason = Math.floor(pickedSeason) + 1;
@@ -99,7 +95,6 @@ class App extends React.Component {
 
     api_call = await fetch('/api/season?showid='+showID+'&season='+pickedSeason);
     data = await api_call.json();
-    console.log(data);
     const numEpisodes = data.episodes.length;
     const seasonEpisodesData = data.episodes;
     let pickedEpisode = Math.random() * (numEpisodes);
@@ -146,9 +141,7 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        <InnerWrapper>
-          {this.renderUI()}
-        </InnerWrapper>
+        {this.renderUI()}
       </Wrapper>
     );
   }
