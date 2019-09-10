@@ -1,13 +1,11 @@
 import React from 'react'
 
-import HeaderText from './styled/HeaderText'
-
 class MainHeader extends React.Component {
   render() {
     return (
-      <HeaderText fatpadding>
+      <div id="main-header-text">
         <h1>TV Roulette</h1>
-      </HeaderText>
+      </div>
     );
   }
 }

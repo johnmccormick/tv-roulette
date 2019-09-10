@@ -2,62 +2,17 @@ import React from 'react'
 
 import * as URLs from './../URLs'
 
-import GenericButton from './styled/GenericButton'
-import HeaderText from './styled/HeaderText'
-import EpisodeInfo from './styled/EpisodeInfo';
-
 function SpinButton(props) {
-	if (props.pickedShow != null) {
+	if (props.again === false) {
 		return (
-			<GenericButton className="spin-button" onClick={props.spin}>Spin</GenericButton>
+			<div className="generic-button spin-button" onClick={props.spin}>Spin</div>
 		);
 	} else {
-		return (null);
+		return (
+			<div className="generic-button spin-button" onClick={props.spin}>Spin again</div>
+		);
 	}
 }
-
-/*
-function Seasons(props) {
-	const numSeasons = props.numSeasons;
-	let seasonColumns = Array(0);
-	if (numSeasons != null) {
-		for (let i = 1; i <= numSeasons; i++) {
-			seasonColumns.push (
-				<div key={i} className={`season-column ${(i === props.pickedSeason ? "picked-season" : "")}`}>
-					<p>
-					{(i === props.pickedSeason ? '--> ' : '')}
-					Season {i}
-					</p>
-				</div>
-			);
-		}
-		return (seasonColumns);
-	} else {
-		return (null);
-	}
-}
-
-function Episodes(props) {
-	const numEpisodes = props.numEpisodes;
-	let episodeColumns = Array(0);
-	if (numEpisodes != null) {
-		for (let i = 0; i < numEpisodes; i++) {
-			episodeColumns.push (
-				<div key={i} className={`episode-column ${(i === props.pickedEpisode ? "picked-episode" : "")}`}>
-					<p>
-					{(i === props.pickedEpisode ? '--> ' : '')}
-					{i + 1}. {props.seasonEpisodesData[i].name}
-					</p>
-				</div>
-			);
-		}
-		return (episodeColumns);
-	} else {
-		return (null);
-	}
-}
-*/
-
 function Episode(props) {
 	const episodeData = props.pickedEpisodeData;
 	if (episodeData != null)
@@ -71,22 +26,22 @@ function Episode(props) {
 		const showName = props.pickedShow.name;
 		//const airDate = episodeData.air_date;
 		return (
-			<EpisodeInfo>
+			<div className="episode-info-inner">
 				<div className="grid-box-1">
-				<HeaderText fatpadding>
-					<h2>Your pick is</h2>
-					<h1>{title}</h1>
-				</HeaderText>
+					<div className="header-text">
+						<h2>Your pick is</h2>
+						<h1>{title}</h1>
+					</div>
 				</div>
 				<div className="grid-box-inner">
 					<div className="grid-box-inner-1">
 						{stillImage}
 					</div>
 					<div className="grid-box-inner-2">
-						<HeaderText fatpadding>
+						<div className="header-text">
 							<h2>{showName}</h2>
 							<h3>Season {seasonNumber}, Episode {episodeNumber}</h3>
-						</HeaderText>
+						</div>
 						{props.showSummary ? 
 							<p>
 								{overview}
@@ -94,7 +49,7 @@ function Episode(props) {
 						: null}
 					</div>
 				</div>
-			</EpisodeInfo>
+			</div>
 		);
 	} else {
 		return (null);
@@ -133,11 +88,11 @@ class Roulette extends React.Component {
 			return (
 				<div className='picked-show-result'>
 					{this.pickedShowImg()}
-					<HeaderText fatpadding>
+					<div className="header-text">
 						<h1>
 							{this.pickedShowText()}
 						</h1>
-					</HeaderText>
+					</div>
 				</div>
 			);
 		} else {
@@ -156,9 +111,9 @@ class Roulette extends React.Component {
 	renderUI() {
 		if (this.props.pickedEpisodeData === null) {
 			return (
-				<div>
+				<div className="roulette-content">
 					{this.pickedResult()}
-					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin}/>
+					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin} again={false}/>
 				</div>
 
 				/*
@@ -174,7 +129,7 @@ class Roulette extends React.Component {
 			return (
 				<div className="episode-info">
 					<Episode pickedShow={this.props.pickedShow} pickedEpisodeData={this.props.pickedEpisodeData} showSummary={this.state.showSummary} toggleSummary={this.toggleSummary.bind(this)}/>
-					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin}/>
+					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin} again={true}/>
 				</div>
 			);
 		}
@@ -184,7 +139,7 @@ class Roulette extends React.Component {
 		return (
 			<div className='roulette'>
 				{this.renderUI()}
-				<GenericButton onClick={() => this.props.newShow()}>New show</GenericButton>
+				<div className="generic-button" onClick={() => this.props.newShow()}>New show</div>
 			</div>
 		);
 	}

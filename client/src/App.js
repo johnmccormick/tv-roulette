@@ -4,7 +4,7 @@ import MainHeader from './components/MainHeader'
 import Search from './components/Search'
 import Roulette from './components/Roulette'
 
-import Wrapper from './components/styled/Wrapper'
+import './App.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -123,27 +123,22 @@ class App extends React.Component {
     })
   }
 
-  renderUI() {
+  render() {
     if (this.state.pickedShow === null) {
       return(
-        <div>
+        <div className="App">
           <MainHeader />
           <Search searchShow={this.searchShow} updateSearch={this.updateSearch.bind(this)} searchResults={this.state.searchResults} numSearchResults={this.state.numSearchResults} pickShow={this.pickShow.bind(this)} searchInputValue={this.state.searchInputValue} updateSearchInputValue={this.updateSearchInputValue.bind(this)} />
         </div>
       );
     } else {
       return(
-        <Roulette pickedShow={this.state.pickedShow} spin={this.spin.bind(this)} numSeasons={this.state.numSeasons} pickedSeason={this.state.pickedSeason} numEpisodes={this.state.numEpisodes} pickedEpisode={this.state.pickedEpisode} seasonEpisodesData={this.state.seasonEpisodesData} pickedEpisodeData={this.state.pickedEpisodeData} newShow={this.newShow.bind(this)}/>
+        <div className="App">
+        <MainHeader />
+          <Roulette pickedShow={this.state.pickedShow} spin={this.spin.bind(this)} numSeasons={this.state.numSeasons} pickedSeason={this.state.pickedSeason} numEpisodes={this.state.numEpisodes} pickedEpisode={this.state.pickedEpisode} seasonEpisodesData={this.state.seasonEpisodesData} pickedEpisodeData={this.state.pickedEpisodeData} newShow={this.newShow.bind(this)}/>
+        </div>
       );
     }
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        {this.renderUI()}
-      </Wrapper>
-    );
   }
 }
 
