@@ -54,14 +54,11 @@ searchedShowYear(i) {
     let resultRows = Array(0);
     if (numSearchResults > 0) {
       resultRows.push (
-        <div className="search-result result-header" key='0'>
-          <p>Search Results</p>
-        </div>
       );
       for (let i = 0; i < numSearchResults; i++)
       {
         resultRows.push (
-          <div key={i+1}>
+          <div key={i}>
             <button className="search-result result-button" onClick={() => this.props.pickShow(i)}>
               {this.searchedShowImg(i)}
               {this.searchedShowText(i)}
