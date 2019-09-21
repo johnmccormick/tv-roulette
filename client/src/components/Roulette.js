@@ -28,8 +28,8 @@ function Episode(props) {
 		return (
 			<div className="episode-container">
 				<div className="episode-header">
+					<h2>Your pick is:</h2>
 					<div className="header-text">
-						<h2>Your pick is</h2>
 						<h1>{title}</h1>
 					</div>
 				</div>
@@ -38,10 +38,8 @@ function Episode(props) {
 						{stillImage}
 					</div>
 					<div className="episode-text">
-						<div className="header-text">
-							<h2>{showName}</h2>
-							<h3>Season {seasonNumber}, Episode {episodeNumber}</h3>
-						</div>
+						<h2 className="episode-show-name">{showName}</h2>
+						<h3 className="episode-season">Season {seasonNumber}, Episode {episodeNumber}</h3>
 						{props.showSummary ? 
 							<p>
 								{overview}
@@ -64,14 +62,6 @@ class Roulette extends React.Component {
 		});
 	}
 
-	pickedShowText() {
-		return (
-			<p>
-				{this.props.pickedShow.name}
-			</p>
-		);
-	}
-
 	pickedShowImg() {
 		if (this.props.pickedShow.poster_path != null) {
 			const posterURL = this.props.pickedShow.poster_path;
@@ -88,11 +78,9 @@ class Roulette extends React.Component {
 			return (
 				<div className='picked-show-result'>
 					{this.pickedShowImg()}
-					<div className="header-text">
-						<h1>
-							{this.pickedShowText()}
-						</h1>
-					</div>
+					<h1>
+						{this.props.pickedShow.name}
+					</h1>
 				</div>
 			);
 		} else {

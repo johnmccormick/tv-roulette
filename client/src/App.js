@@ -134,7 +134,7 @@ class App extends React.Component {
     } else {
       return(
         <div className="App">
-        <MainHeader />
+          <MainHeader />
           <Roulette pickedShow={this.state.pickedShow} spin={this.spin.bind(this)} numSeasons={this.state.numSeasons} pickedSeason={this.state.pickedSeason} numEpisodes={this.state.numEpisodes} pickedEpisode={this.state.pickedEpisode} seasonEpisodesData={this.state.seasonEpisodesData} pickedEpisodeData={this.state.pickedEpisodeData} newShow={this.newShow.bind(this)}/>
         </div>
       );

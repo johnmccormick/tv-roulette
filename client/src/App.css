@@ -11,8 +11,8 @@ html {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 30px;
     max-width: 650px;
     margin: auto;
@@ -23,10 +23,19 @@ html {
     transform: translateY(100%);
 }
 
+.full {
+    min-height: 100%;
+}
+
 #main-header-text {
     font-size: calc(14px + 1.1vmin);
     color: white;
-    margin: 5vh;
+    margin: 3vh 0;
+    transition: 0.3s;
+}
+
+.App.centered #main-header-text {
+    font-size: calc(16px + 1.7vmin)
 }
 
 .header-text {
@@ -39,7 +48,14 @@ html {
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 550px;
+    transition: 0.5s;
 }
+
+.App.centered .search {
+    max-width: 470px;
+}
+
 
 .text-input {
     text-align: center;
@@ -48,6 +64,7 @@ html {
     border: none;
     border-radius: 4px;
     font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+
     font-size: calc(10px + 2vh);
     font-weight: 400;
     line-height: normal;
@@ -87,7 +104,6 @@ html {
 .result-button {
     flex-direction: row;
     justify-content: flex-start;
-    overflow-y: scroll;
 }
 
 button {
@@ -128,12 +144,13 @@ button {
 .search-title {
     flex: 8;
     padding-left: calc(15px + 2vw);
+    padding-right: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
 
 .search-year {
-    font-size: 80%;
+    font-size: calc(10px + 1vh);
     flex: 1;
     padding-right: calc(10px + 2vw);
     padding-top: 15px;
@@ -147,24 +164,33 @@ button {
 }
 
 .picked-show-result {
-    margin-bottom: 10px;
+    color: white;
+	margin-bottom: 15px;
+    padding: 30px 30px 15px 30px;
+    max-width: 400px;
+}
+
+.picked-show-result, .episode-container {
+    background: rgba(200, 200, 255, 0.07) none repeat scroll 0% 0%;
+    border-radius: 5px;
 }
 
 .picked-show-result img {
     max-width: 100%;
     max-height: 50vh;
+    margin-bottom: 5px;
 }
 
 .episode-info {
     display: flex;
     flex-direction: column;
 	font-size: 18px;
-	margin: 20px 0px 0px;
 	color: white;
-	background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
 	cursor: default;
-	border-radius: 5px;
-	padding: 15px;
+}
+
+.episode-header {
+    color: white;
 }
 
 .episode-image {
@@ -181,9 +207,19 @@ button {
 }
 
 .episode-container {
+    padding: 15px;
     margin-bottom: 15px;
 }
 
 .episode-text {
     padding: 25px;
+}
+
+.episode-show-name {
+    padding: 5px;
+}
+
+.episode-season
+{
+    padding: 5px;
 }
