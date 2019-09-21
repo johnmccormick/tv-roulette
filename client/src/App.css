@@ -10,7 +10,9 @@ html {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
     max-width: 650px;
     margin: auto;
     min-height: 100%;
@@ -19,7 +21,7 @@ html {
 #main-header-text {
     font-size: calc(16px + 1.1vmin);
     color: white;
-    margin: 2vh;
+    margin: 4vh;
 }
 
 .header-text {
@@ -140,7 +142,7 @@ button {
 }
 
 .picked-show-result img {
-    height: 45vh;
+    flex: 1
 }
 
 .grid-box-inner {
@@ -148,12 +150,16 @@ button {
 	display: grid;
 	text-align: center;
 	font-size: 18px;
-	margin: 10px 0px 0px;
+	margin: 20px 0px 0px;
 	color: white;
 	background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
 	cursor: default;
 	border-radius: 5px;
 	padding: 15px;
+}
+
+.grid-box-inner-1 {
+    margin-top: 20px;
 }
 
 .episode-info {

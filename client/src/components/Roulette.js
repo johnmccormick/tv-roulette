@@ -139,7 +139,7 @@ class Roulette extends React.Component {
 		return (
 			<div className='roulette'>
 				{this.renderUI()}
-				<div className="generic-button" onClick={() => this.props.newShow()}>New show</div>
+				<div className="generic-button" onClick={() => this.props.newShow()}>Back</div>
 			</div>
 		);
 	}
