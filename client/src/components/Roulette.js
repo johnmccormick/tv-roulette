@@ -26,18 +26,18 @@ function Episode(props) {
 		const showName = props.pickedShow.name;
 		//const airDate = episodeData.air_date;
 		return (
-			<div className="episode-info-inner">
-				<div className="grid-box-1">
+			<div className="episode-container">
+				<div className="episode-header">
 					<div className="header-text">
 						<h2>Your pick is</h2>
 						<h1>{title}</h1>
 					</div>
 				</div>
-				<div className="grid-box-inner">
-					<div className="grid-box-inner-1">
+				<div className="episode-info">
+					<div className="episode-image">
 						{stillImage}
 					</div>
-					<div className="grid-box-inner-2">
+					<div className="episode-text">
 						<div className="header-text">
 							<h2>{showName}</h2>
 							<h3>Season {seasonNumber}, Episode {episodeNumber}</h3>
@@ -76,7 +76,7 @@ class Roulette extends React.Component {
 		if (this.props.pickedShow.poster_path != null) {
 			const posterURL = this.props.pickedShow.poster_path;
 			return (
-				<img src={URLs.IMAGES+posterURL} height="512px" alt="Picked show poster"></img>
+				<img src={URLs.IMAGES+posterURL} alt="Picked show poster"></img>
 			);
 		} else {
 			return (null);
@@ -127,7 +127,7 @@ class Roulette extends React.Component {
 			);
 		} else {
 			return (
-				<div className="episode-info">
+				<div className="episode">
 					<Episode pickedShow={this.props.pickedShow} pickedEpisodeData={this.props.pickedEpisodeData} showSummary={this.state.showSummary} toggleSummary={this.toggleSummary.bind(this)}/>
 					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin} again={true}/>
 				</div>

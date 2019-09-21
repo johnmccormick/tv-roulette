@@ -15,7 +15,7 @@ function SearchInput(props) {
 class SearchResults extends React.Component {
   searchedShowText(i) {
     return (
-      <p class="search-title">
+      <p className="search-title">
         {this.props.searchResults[i].original_name}
       </p>
     );
@@ -45,11 +45,11 @@ class SearchResults extends React.Component {
   searchedShowImg(i) {
     if (this.props.searchResults[i].poster_path != null) {
       return (
-        <img class="button-img" src={URLs.IMAGES+this.props.searchResults[i].poster_path} alt="TV Poster" />
+        <img className="button-img" src={URLs.IMAGES+this.props.searchResults[i].poster_path} alt="TV Poster" />
       );
     } else {
       return (
-        <div class="button-img" />
+        <div className="button-img" />
       );
     }
   }
@@ -62,7 +62,7 @@ class SearchResults extends React.Component {
     let resultRows = Array(0);
     if (numSearchResults > 0) {
       resultRows.push (
-        <div class="search-result result-header" key='0'>
+        <div className="search-result result-header" key='0'>
           <p>Search Results</p>
         </div>
       );
@@ -70,7 +70,7 @@ class SearchResults extends React.Component {
       {
         resultRows.push (
           <div key={i+1}>
-            <button class="search-result result-button" onClick={() => this.props.pickShow(i)}>
+            <button className="search-result result-button" onClick={() => this.props.pickShow(i)}>
                 {this.searchedShowImg(i)}
                 {this.searchedShowText(i)}
                 {this.searchedShowYear(i)}

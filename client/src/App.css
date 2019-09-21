@@ -4,6 +4,7 @@ html {
     background: rgba(0, 0, 0, 0) linear-gradient(20deg, #001f3f, #111111) no-repeat fixed;
 }
 
+
 .App {
     display: flex;
     flex-direction: column;
@@ -15,23 +16,26 @@ html {
     padding-bottom: 30px;
     max-width: 650px;
     margin: auto;
-    min-height: 100%;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.centered {
+    transform: translateY(75%);
 }
 
 #main-header-text {
-    font-size: calc(16px + 1.1vmin);
+    font-size: calc(14px + 1.1vmin);
     color: white;
-    margin: 4vh;
+    margin: 5vh;
 }
 
 .header-text {
-    font-size: calc(12px + 2vmin);
+    font-size: calc(10px + 2vmin);
     color: white;
     margin: 2vh;
 }
 
 .search {
-    padding: 10px 0px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -69,7 +73,7 @@ html {
     color: white;
     border: 0;
     border-radius: 3px;
-    margin: 1vh 0;
+    margin: 0.4vh 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.4) repeat scroll 0% 0%;
 }
@@ -77,6 +81,7 @@ html {
 .result-header {
     padding: calc(5px + 0.5vh);
     flex-direction: column;
+    margin-top: 0.6vh;
 }
 
 .result-button {
@@ -141,14 +146,18 @@ button {
     align-content: center;
 }
 
-.picked-show-result img {
-    flex: 1
+.picked-show-result {
+    margin-bottom: 10px;
 }
 
-.grid-box-inner {
-	grid-row: 2 / auto;
-	display: grid;
-	text-align: center;
+.picked-show-result img {
+    max-width: 100%;
+    max-height: 50vh;
+}
+
+.episode-info {
+    display: flex;
+    flex-direction: column;
 	font-size: 18px;
 	margin: 20px 0px 0px;
 	color: white;
@@ -158,19 +167,23 @@ button {
 	padding: 15px;
 }
 
-.grid-box-inner-1 {
+.episode-image {
     margin-top: 20px;
 }
 
-.episode-info {
+.episode-image img {
+    max-width: 100%;
+}
+
+.episode {
     display: flex;
     flex-direction: column;
 }
 
-.episode-info-inner {
+.episode-container {
     margin-bottom: 15px;
 }
 
-.grid-box-inner-2 {
+.episode-text {
     padding: 25px;
 }
