@@ -5,11 +5,11 @@ import * as URLs from './../URLs'
 function SpinButton(props) {
 	if (props.again === false) {
 		return (
-			<div className="generic-button spin-button" onClick={props.spin}>Spin</div>
+			<div className="generic-button spin-button" onClick={props.spin}><p>Spin</p></div>
 		);
 	} else {
 		return (
-			<div className="generic-button spin-button" onClick={props.spin}>Spin again</div>
+			<div className="generic-button spin-button" onClick={props.spin}><p>Spin again</p></div>
 		);
 	}
 }
@@ -39,12 +39,10 @@ function Episode(props) {
 					</div>
 					<div className="episode-text">
 						<h2 className="episode-show-name">{showName}</h2>
-						<h3 className="episode-season">Season {seasonNumber}, Episode {episodeNumber}</h3>
-						{props.showSummary ? 
-							<p>
-								{overview}
-							</p>
-						: null}
+						<h3 className="episode-season">Season {seasonNumber}, Episode {episodeNumber}</h3> 
+						<p>
+							{overview}
+						</p>
 					</div>
 				</div>
 			</div>
@@ -127,7 +125,7 @@ class Roulette extends React.Component {
 		return (
 			<div className='roulette'>
 				{this.renderUI()}
-				<div className="generic-button" onClick={() => this.props.newShow()}>Back</div>
+				<div className="generic-button" onClick={() => this.props.newShow()}><p>Back</p></div>
 			</div>
 		);
 	}
