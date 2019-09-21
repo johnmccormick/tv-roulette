@@ -2,6 +2,8 @@ import React from 'react'
 
 import * as URLs from './../URLs'
 
+import emptyImg from './../assets/empty.png'
+
 const WAIT_INTERVAL = 600;
 const ENTER_KEY = 13;
 const MAX_RESULTS = 7;
@@ -19,25 +21,15 @@ class SearchResults extends React.Component {
         {this.props.searchResults[i].original_name}
       </p>
     );
-  }
-  
-  searchedShowYear(i) {
+}
+
+searchedShowYear(i) {
     var date = this.props.searchResults[i].first_air_date;
 
     if (date) {
-      var year = date.substring(0, 4);
-
-      return (
-        <p className="search-year">
-          {year}
-        </p>
-      );
+      return date.substring(0, 4);
     } else {
-      return (
-        <p className="search-year">
-          ?
-        </p>
-      ) 
+      return "";
     }
     
   }
@@ -49,7 +41,7 @@ class SearchResults extends React.Component {
       );
     } else {
       return (
-        <div className="button-img" />
+        <img className="button-img" src={emptyImg} alt=""/>
       );
     }
   }
@@ -71,14 +63,16 @@ class SearchResults extends React.Component {
         resultRows.push (
           <div key={i+1}>
             <button className="search-result result-button" onClick={() => this.props.pickShow(i)}>
-                {this.searchedShowImg(i)}
-                {this.searchedShowText(i)}
+              {this.searchedShowImg(i)}
+              {this.searchedShowText(i)}
+              <p className="search-year">
                 {this.searchedShowYear(i)}
+              </p>
             </button>
           </div>
         );
       }
-      return (resultRows);
+      return (<div className="search-results">{resultRows}</div>);
     } else {
       return (null);
     }

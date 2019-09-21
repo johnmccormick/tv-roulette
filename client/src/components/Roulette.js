@@ -3,13 +3,14 @@ import React from 'react'
 import * as URLs from './../URLs'
 
 function SpinButton(props) {
-	if (props.again === false) {
+	if (props.pickedEpisode === null) {
 		return (
-			<div className="generic-button spin-button" onClick={props.spin}><p>Spin</p></div>
+			<button className="generic-button spin-button" onClick={props.spin}><p>Spin</p></button>
 		);
 	} else {
+		console.log(props.pickedEpisode);
 		return (
-			<div className="generic-button spin-button" onClick={props.spin}><p>Spin again</p></div>
+			<button className="generic-button spin-button" onClick={props.spin}><p>Spin again</p></button>
 		);
 	}
 }
@@ -99,7 +100,6 @@ class Roulette extends React.Component {
 			return (
 				<div className="roulette-content">
 					{this.pickedResult()}
-					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin} again={false}/>
 				</div>
 
 				/*
@@ -115,7 +115,6 @@ class Roulette extends React.Component {
 			return (
 				<div className="episode">
 					<Episode pickedShow={this.props.pickedShow} pickedEpisodeData={this.props.pickedEpisodeData} showSummary={this.state.showSummary} toggleSummary={this.toggleSummary.bind(this)}/>
-					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin} again={true}/>
 				</div>
 			);
 		}
@@ -123,9 +122,14 @@ class Roulette extends React.Component {
 
 	render() {
 		return (
-			<div className='roulette'>
-				{this.renderUI()}
-				<div className="generic-button" onClick={() => this.props.newShow()}><p>Back</p></div>
+			<div>
+				<div className='roulette'>
+					{this.renderUI()}
+				</div>
+				<div className="button-group">
+					<SpinButton pickedShow={this.props.pickedShow} pickedEpisode={this.props.pickedEpisodeData} spin={this.props.spin}/>
+					<button id="back-button" className="generic-button" onClick={() => this.props.newShow()}><p>Back</p></button>
+				</div>
 			</div>
 		);
 	}

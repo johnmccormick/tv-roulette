@@ -126,7 +126,7 @@ class App extends React.Component {
   render() {
     if (this.state.pickedShow === null) {
       return(
-        <div className={`App ${this.state.searchInputValue.trim() === "" && this.state.searchResults === null ? "centered" : ""}`}>
+        <div className="App">
           <MainHeader />
           <Search searchShow={this.searchShow} updateSearch={this.updateSearch.bind(this)} searchResults={this.state.searchResults} numSearchResults={this.state.numSearchResults} pickShow={this.pickShow.bind(this)} searchInputValue={this.state.searchInputValue} updateSearchInputValue={this.updateSearchInputValue.bind(this)} />
         </div>
