@@ -20,7 +20,7 @@ html {
 }
 
 .centered {
-    transform: translateY(75%);
+    transform: translateY(100%);
 }
 
 #main-header-text {
