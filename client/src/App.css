@@ -46,7 +46,7 @@ p, h1, h2, h3, h4, input {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     transition: 0.5s;
     /*flex: 8;*/
 }
@@ -63,7 +63,7 @@ p, h1, h2, h3, h4, input {
     border: none;
     border-radius: 4px;
     font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-    font-size: calc(10px + 2vh);
+    font-size: calc(8px + 2vh);
     font-weight: 400;
     line-height: normal;
     background-color: transparent;
@@ -151,9 +151,9 @@ button {
 }
 
 .search-title {
-    flex: 8;
-    padding: 1vw;
-    margin-left: calc(5px + 2vw);
+    flex: 7;
+    margin-left: calc(5px + 1vw);
+
 }
 
 .search-year {
