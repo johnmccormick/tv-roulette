@@ -2,62 +2,18 @@ import React from 'react'
 
 import * as URLs from './../URLs'
 
-import GenericButton from './styled/GenericButton'
-import HeaderText from './styled/HeaderText'
-import EpisodeInfo from './styled/EpisodeInfo';
-
 function SpinButton(props) {
-	if (props.pickedShow != null) {
+	if (props.pickedEpisode === null) {
 		return (
-			<GenericButton className="spin-button" onClick={props.spin}>Spin</GenericButton>
+			<button className="generic-button spin-button" onClick={props.spin}><p>Spin</p></button>
 		);
 	} else {
-		return (null);
+		console.log(props.pickedEpisode);
+		return (
+			<button className="generic-button spin-button" onClick={props.spin}><p>Spin again</p></button>
+		);
 	}
 }
-
-/*
-function Seasons(props) {
-	const numSeasons = props.numSeasons;
-	let seasonColumns = Array(0);
-	if (numSeasons != null) {
-		for (let i = 1; i <= numSeasons; i++) {
-			seasonColumns.push (
-				<div key={i} className={`season-column ${(i === props.pickedSeason ? "picked-season" : "")}`}>
-					<p>
-					{(i === props.pickedSeason ? '--> ' : '')}
-					Season {i}
-					</p>
-				</div>
-			);
-		}
-		return (seasonColumns);
-	} else {
-		return (null);
-	}
-}
-
-function Episodes(props) {
-	const numEpisodes = props.numEpisodes;
-	let episodeColumns = Array(0);
-	if (numEpisodes != null) {
-		for (let i = 0; i < numEpisodes; i++) {
-			episodeColumns.push (
-				<div key={i} className={`episode-column ${(i === props.pickedEpisode ? "picked-episode" : "")}`}>
-					<p>
-					{(i === props.pickedEpisode ? '--> ' : '')}
-					{i + 1}. {props.seasonEpisodesData[i].name}
-					</p>
-				</div>
-			);
-		}
-		return (episodeColumns);
-	} else {
-		return (null);
-	}
-}
-*/
-
 function Episode(props) {
 	const episodeData = props.pickedEpisodeData;
 	if (episodeData != null)
@@ -71,30 +27,26 @@ function Episode(props) {
 		const showName = props.pickedShow.name;
 		//const airDate = episodeData.air_date;
 		return (
-			<EpisodeInfo>
-				<div className="grid-box-1">
-				<HeaderText fatpadding>
-					<h2>Your pick is</h2>
-					<h1>{title}</h1>
-				</HeaderText>
+			<div className="episode-container">
+				<div className="episode-header">
+					<h2>Your pick is:</h2>
+					<div className="header-text">
+						<h1>{title}</h1>
+					</div>
 				</div>
-				<div className="grid-box-inner">
-					<div className="grid-box-inner-1">
+				<div className="episode-info">
+					<div className="episode-image">
 						{stillImage}
 					</div>
-					<div className="grid-box-inner-2">
-						<HeaderText fatpadding>
-							<h2>{showName}</h2>
-							<h3>Season {seasonNumber}, Episode {episodeNumber}</h3>
-						</HeaderText>
-						{props.showSummary ? 
-							<p>
-								{overview}
-							</p>
-						: null}
+					<div className="episode-text">
+						<h2 className="episode-show-name">{showName}</h2>
+						<h3 className="episode-season">Season {seasonNumber}, Episode {episodeNumber}</h3> 
+						<p>
+							{overview}
+						</p>
 					</div>
 				</div>
-			</EpisodeInfo>
+			</div>
 		);
 	} else {
 		return (null);
@@ -109,19 +61,11 @@ class Roulette extends React.Component {
 		});
 	}
 
-	pickedShowText() {
-		return (
-			<p>
-				{this.props.pickedShow.name}
-			</p>
-		);
-	}
-
 	pickedShowImg() {
 		if (this.props.pickedShow.poster_path != null) {
 			const posterURL = this.props.pickedShow.poster_path;
 			return (
-				<img src={URLs.IMAGES+posterURL} height="512px" alt="Picked show poster"></img>
+				<img src={URLs.IMAGES+posterURL} alt="Picked show poster"></img>
 			);
 		} else {
 			return (null);
@@ -133,11 +77,9 @@ class Roulette extends React.Component {
 			return (
 				<div className='picked-show-result'>
 					{this.pickedShowImg()}
-					<HeaderText fatpadding>
-						<h1>
-							{this.pickedShowText()}
-						</h1>
-					</HeaderText>
+					<h1>
+						{this.props.pickedShow.name}
+					</h1>
 				</div>
 			);
 		} else {
@@ -156,9 +98,8 @@ class Roulette extends React.Component {
 	renderUI() {
 		if (this.props.pickedEpisodeData === null) {
 			return (
-				<div>
+				<div className="roulette-content">
 					{this.pickedResult()}
-					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin}/>
 				</div>
 
 				/*
@@ -172,9 +113,8 @@ class Roulette extends React.Component {
 			);
 		} else {
 			return (
-				<div className="episode-info">
+				<div className="episode">
 					<Episode pickedShow={this.props.pickedShow} pickedEpisodeData={this.props.pickedEpisodeData} showSummary={this.state.showSummary} toggleSummary={this.toggleSummary.bind(this)}/>
-					<SpinButton pickedShow={this.props.pickedShow} spin={this.props.spin}/>
 				</div>
 			);
 		}
@@ -182,9 +122,14 @@ class Roulette extends React.Component {
 
 	render() {
 		return (
-			<div className='roulette'>
-				{this.renderUI()}
-				<GenericButton onClick={() => this.props.newShow()}>New show</GenericButton>
+			<div>
+				<div className='roulette'>
+					{this.renderUI()}
+				</div>
+				<div className="button-group">
+					<SpinButton pickedShow={this.props.pickedShow} pickedEpisode={this.props.pickedEpisodeData} spin={this.props.spin}/>
+					<button id="back-button" className="generic-button" onClick={() => this.props.newShow()}><p>Back</p></button>
+				</div>
 			</div>
 		);
 	}

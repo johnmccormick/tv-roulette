@@ -4,8 +4,7 @@ import MainHeader from './components/MainHeader'
 import Search from './components/Search'
 import Roulette from './components/Roulette'
 
-import Wrapper from './components/styled/Wrapper'
-import InnerWrapper from './components/styled/InnerWrapper'
+import './App.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -36,7 +35,6 @@ class App extends React.Component {
     const showToSearch = this.state.searchString;
     const api_call = await fetch('/api/search?name='+showToSearch);
     const data = await api_call.json();
-    console.log(data);
     if (data.total_results > 0) {
       this.setState({
         numSearchResults: data.results.length,
@@ -52,7 +50,6 @@ class App extends React.Component {
 
   pickShow(i) {
     const searchResults = this.state.searchResults;
-    console.log(searchResults);
     this.setState({
       pickedShow: searchResults[i],
     }, () => {
@@ -86,7 +83,6 @@ class App extends React.Component {
     const showID = this.state.pickedShow.id;
     let api_call = await fetch('/api/show?id='+ showID);
     let data = await api_call.json();
-    console.log(data);
     const numSeasons = data.number_of_seasons;
     let pickedSeason = Math.random() * (numSeasons);
     pickedSeason = Math.floor(pickedSeason) + 1;
@@ -99,7 +95,6 @@ class App extends React.Component {
 
     api_call = await fetch('/api/season?showid='+showID+'&season='+pickedSeason);
     data = await api_call.json();
-    console.log(data);
     const numEpisodes = data.episodes.length;
     const seasonEpisodesData = data.episodes;
     let pickedEpisode = Math.random() * (numEpisodes);
@@ -128,29 +123,22 @@ class App extends React.Component {
     })
   }
 
-  renderUI() {
+  render() {
     if (this.state.pickedShow === null) {
       return(
-        <div>
+        <div className="App">
           <MainHeader />
           <Search searchShow={this.searchShow} updateSearch={this.updateSearch.bind(this)} searchResults={this.state.searchResults} numSearchResults={this.state.numSearchResults} pickShow={this.pickShow.bind(this)} searchInputValue={this.state.searchInputValue} updateSearchInputValue={this.updateSearchInputValue.bind(this)} />
         </div>
       );
     } else {
       return(
-        <Roulette pickedShow={this.state.pickedShow} spin={this.spin.bind(this)} numSeasons={this.state.numSeasons} pickedSeason={this.state.pickedSeason} numEpisodes={this.state.numEpisodes} pickedEpisode={this.state.pickedEpisode} seasonEpisodesData={this.state.seasonEpisodesData} pickedEpisodeData={this.state.pickedEpisodeData} newShow={this.newShow.bind(this)}/>
+        <div className="App">
+          <MainHeader />
+          <Roulette pickedShow={this.state.pickedShow} spin={this.spin.bind(this)} numSeasons={this.state.numSeasons} pickedSeason={this.state.pickedSeason} numEpisodes={this.state.numEpisodes} pickedEpisode={this.state.pickedEpisode} seasonEpisodesData={this.state.seasonEpisodesData} pickedEpisodeData={this.state.pickedEpisodeData} newShow={this.newShow.bind(this)}/>
+        </div>
       );
     }
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <InnerWrapper>
-          {this.renderUI()}
-        </InnerWrapper>
-      </Wrapper>
-    );
   }
 }
 

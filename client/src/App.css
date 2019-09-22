@@ -1,0 +1,221 @@
+h1 {
+    font-size: (10px + 3vh)
+}
+
+p, h1, h2, h3, h4, input {
+    color: white;
+    opacity: 0.95;
+}
+
+.App {
+    background: #00000000 linear-gradient(20deg, #001f3f, #111111) no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    max-width: 100%;
+    min-height: 100%;
+    margin: auto;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    /*height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    /*height: calc(var(--vh, 1vh) * 100);*/
+}
+
+.full {
+    min-height: 100%;
+}
+
+#main-header-text {
+    font-size: calc(14px + 1.1vmin);
+    margin: 3vh 0;
+    transition: 0.3s;
+    /*flex: 1; */
+    flex-shrink: 0;
+}
+
+.header-text {
+    font-size: calc(10px + 2vmin);
+    margin-top: 2vh;
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    transition: 0.5s;
+    /*flex: 8;*/
+}
+
+/* .search-results {
+    overflow-y: scroll;
+} */
+
+.text-input {
+    /*flex: 1;*/
+    max-height: 50px;
+    text-align: center;
+    height: calc(30px + 3vh);
+    border: none;
+    border-radius: 4px;
+    font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-size: calc(10px + 2vh);
+    font-weight: 400;
+    line-height: normal;
+    background-color: transparent;
+    outline: none;
+    box-shadow: 0px 4px 20px 0px transparent;
+    background-color: rgba(255,255,255,0.3);
+    transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
+    -webkit-appearance: none;
+    margin-bottom: 0.5vh;
+}
+
+input::placeholder{
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.text-input:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-size: calc(10px + 2vh);
+    border: 0;
+    border-radius: 3px;
+    margin: 0.5vh 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4) repeat scroll 0% 0%;
+}
+
+.result-header {
+    padding: calc(5px + 0.5vh);
+    flex-direction: column;
+    margin: 1.5vh 1vh 1vh;
+    background: 0;
+}
+
+.result-button {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+button {
+    cursor: pointer;
+}
+
+.generic-button {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 20px;
+    padding: 7px 20px 10px;
+    margin: 5px;
+}
+
+.button-group {
+    margin: 1vh;
+}
+
+#back-button {
+    border: 0;
+}
+
+.roulette-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-img {
+    vertical-align: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 5px;
+    max-height: calc(100px + 2vh);
+    flex: 1;
+}
+
+.result-button img {
+    max-height: calc(100px + 2vh);
+}
+
+.search-title {
+    flex: 8;
+    padding: 1vw;
+    margin-left: calc(5px + 2vw);
+}
+
+.search-year {
+    font-size: calc(8px + 1vh);
+    flex: 1;
+    padding: calc(5px + 0.5vw);
+}
+
+.roulette {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 550px;
+}
+
+.picked-show-result {
+	margin-bottom: 15px;
+    padding: 30px 30px 15px 30px;
+    max-width: 400px;
+}
+
+.picked-show-result, .episode-container {
+    background: rgba(200, 200, 255, 0.07) none repeat scroll 0% 0%;
+    border-radius: 5px;
+}
+
+.picked-show-result img {
+    max-width: 100%;
+    max-height: 45vh;
+    margin-bottom: 2vh;
+}
+
+.episode-info {
+    display: flex;
+    flex-direction: column;
+	font-size: 18px;
+	cursor: default;
+}
+
+.episode-image {
+    margin: calc(10px + 2vh) 0 calc(5px + 1.25vh)
+}
+
+.episode-image img {
+    max-width: 100%;
+}
+
+.episode {
+    display: flex;
+    flex-direction: column;
+}
+
+.episode-container {
+    padding: 15px 25px;
+    margin-bottom: 15px;
+}
+
+.episode-text {
+    padding: 0 25px 5px 25px;
+}
+
+.episode-season
+{
+    padding: 8px;
+}
