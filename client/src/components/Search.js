@@ -10,7 +10,7 @@ const MAX_RESULTS = 7;
 
 function SearchInput(props) {
   return (
-    <input className="text-input" name="search-input" onChange={props.handleSearchChange.bind(this)} on onFocus={props.handleFocus.bind(this)} onKeyDown={props.handleSearchKeyDown.bind(this)} value={props.searchInputValue} label="Show" type="text" placeholder="Pick a show"/>
+    <input className="text-input" name="search-input" onChange={props.handleSearchChange.bind(this)} onFocus={props.handleFocus.bind(this)} onKeyDown={props.handleSearchKeyDown.bind(this)} value={props.searchInputValue} label="Show" type="text" placeholder="Pick a show"/>
   );
 }
 

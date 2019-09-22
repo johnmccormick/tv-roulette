@@ -8,7 +8,6 @@ function SpinButton(props) {
 			<button className="generic-button spin-button" onClick={props.spin}><p>Spin</p></button>
 		);
 	} else {
-		console.log(props.pickedEpisode);
 		return (
 			<button className="generic-button spin-button" onClick={props.spin}><p>Spin again</p></button>
 		);
