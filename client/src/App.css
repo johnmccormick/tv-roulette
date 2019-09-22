@@ -153,13 +153,13 @@ button {
 .search-title {
     flex: 8;
     padding: 1vw;
-    margin-left: 2vw;
+    margin-left: calc(5px + 2vw);
 }
 
 .search-year {
     font-size: calc(8px + 1vh);
     flex: 1;
-    padding: 0.5vw;
+    padding: calc(5px + 0.5vw);
 }
 
 .roulette {
